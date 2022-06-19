@@ -73,7 +73,7 @@ for sample_size in sample_sizes:
 
 
 "Plot best results"
-plt.rcParams["figure.figsize"] = (12, 7)
+plt.rcParams["figure.figsize"] = (14, 7)
 palette = sns.color_palette(cc.glasbey, n_colors=5)
 sns.set_style("darkgrid")
 sns.scatterplot(df_scatter[:,0],
@@ -84,8 +84,10 @@ sns.scatterplot(df_scatter[:,0],
                 alpha=0.4,
                 s=45)
 
-plt.legend(ncol=1)
-plt.title("SeededKmeans")
+plt.legend(ncol=1, prop={"size":17})
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.title("SeededKmeans", fontsize=20)
 plt.savefig('SeededKMeans_scatter.png', bbox_inches='tight')
 plt.show()
 

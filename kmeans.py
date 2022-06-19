@@ -41,7 +41,7 @@ for init in inits:
 
     model.fit(X1)
     results = model.predict(X1)
-    ami_score = adjusted_mutual_info_score(results, ground_truth)
+    ami_score = v_measure_score(results, ground_truth)
     print("n_init", init)
     print("AMI Score Kmeans: ", adjusted_mutual_info_score(results, ground_truth))
     print("\n")
@@ -57,7 +57,7 @@ for init in inits:
 
 
 "Plot results of best model"
-plt.rcParams["figure.figsize"] = (12, 7)
+plt.rcParams["figure.figsize"] = (14, 7)
 sns.set_style("darkgrid")
 palette = sns.color_palette(cc.glasbey, n_colors=k)
 sns.scatterplot(X[:,0],
@@ -66,8 +66,10 @@ sns.scatterplot(X[:,0],
                 hue=best_results,
                 alpha=0.4,
                 palette=palette)
-plt.title("Kmeans")
-plt.legend()
+plt.title("Kmeans", fontsize=20)
+plt.legend(ncol=1, prop={"size":17})
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 plt.savefig('Kmeans_scatter.png', bbox_inches='tight')
 plt.show()
 

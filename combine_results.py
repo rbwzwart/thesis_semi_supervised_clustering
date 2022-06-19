@@ -93,40 +93,43 @@ pck_dict = {
     "200": {'0.5':0.8351183425882895, '1': 0.831549104698685, '1.5':0.8300905879496976, '2':0.8949434943324779},
 }
 
-df_plot = pd.DataFrame(pck_dict)
-ax = df_plot.T.plot.barh(figsize=(17,10), rot=0)
-ax.tick_params(axis='x', labelsize=15)
-ax.tick_params(axis='y', labelsize=15)
-ax.set_xlabel("AMI Score", fontdict={'fontsize':17})
-ax.set_ylabel("Maximum Queries", fontdict={'fontsize':17})
-ax.legend(fontsize = 15, loc="upper left", title="Penalty size", prop={'size': 15}, title_fontsize=17)
-for container in ax.containers:
-    ax.bar_label(container, fontsize=16)
-plt.savefig('PCKMeans_results.png', bbox_inches='tight')
-plt.show()
+# df_plot = pd.DataFrame(pck_dict)
+# ax = df_plot.T.plot.barh(figsize=(17,10), rot=0, width=0.9)
+# ax.tick_params(axis='x', labelsize=22)
+# ax.tick_params(axis='y', labelsize=22)
+# ax.set_xlabel("AMI Score", fontdict={'fontsize':24})
+# ax.set_ylabel("Maximum Queries", fontdict={'fontsize':24})
+# handles, labels = ax.get_legend_handles_labels()
+# ax.legend(reversed(handles), reversed(labels), fontsize = 15, title="Penalty size", prop={'size': 22}, title_fontsize=22, loc='upper left')
+# ax.set_xlim(.4, 1)
+# for container in ax.containers:
+#     ax.bar_label(container, fontsize=22)
+# plt.savefig('PCKMeans_results.png', bbox_inches='tight')
+# plt.show()
 
 
-"Plot SeededKMeans AMI for all models"
-
-SeedK_dict = {
-    "50": [0.8440299986219179],
-    "100": [0.8621850090288193],
-    "150": [0.8621850090288193],
-    "200": [0.9259195738517745],
-}
-
-df_plot = pd.DataFrame(SeedK_dict)
-ax = df_plot.T.plot.barh(figsize=(17,10), rot=0, legend=False)
-ax.tick_params(axis='x', labelsize=15)
-ax.tick_params(axis='y', labelsize=15)
-ax.set_xlabel("AMI Score", fontdict={'fontsize':17})
-ax.set_ylabel("Sample size", fontdict={'fontsize':17})
-ax.bar_label(ax.containers[0], fontsize=16)
-plt.savefig('SeededKMeans_results.png', bbox_inches='tight')
-plt.show()
-
-
-
+# "Plot SeededKMeans AMI for all models"
+#
+# SeedK_dict = {
+#     "50": [0.8440299986219179],
+#     "100": [0.8621850090288193],
+#     "150": [0.8621850090288193],
+#     "200": [0.9259195738517745],
+# }
+#
+# df_plot = pd.DataFrame(SeedK_dict)
+# ax = df_plot.T.plot.barh(figsize=(17,7), rot=0, legend=False, width=0.3)
+# ax.set_xlim(.4, 1)
+# ax.tick_params(axis='x', labelsize=23)
+# ax.tick_params(axis='y', labelsize=23)
+# ax.set_xlabel("AMI Score", fontdict={'fontsize':25})
+# ax.set_ylabel("Sample size", fontdict={'fontsize':25})
+# ax.bar_label(ax.containers[0], fontsize=23)
+# plt.savefig('SeededKMeans_results.png', bbox_inches='tight')
+# plt.show()
+#
+#
+#
 "Plot KMeans AMI for all models"
 
 KMeans_dict = {
@@ -137,37 +140,38 @@ KMeans_dict = {
 }
 
 df_plot = pd.DataFrame(KMeans_dict)
-ax = df_plot.T.plot.barh(figsize=(17,10), rot=0, legend=False)
-ax.tick_params(axis='x', labelsize=15)
-ax.tick_params(axis='y', labelsize=15)
-ax.set_xlabel("AMI Score", fontdict={'fontsize':17})
-ax.set_ylabel("N_iterations", fontdict={'fontsize':17})
-ax.bar_label(ax.containers[0], fontsize=16)
+ax = df_plot.T.plot.barh(figsize=(17,7), rot=0, legend=False, width=0.3)
+ax.set_xlim(.4, 1)
+ax.tick_params(axis='x', labelsize=23)
+ax.tick_params(axis='y', labelsize=23)
+ax.set_xlabel("AMI Score", fontdict={'fontsize':25})
+ax.set_ylabel("N_iterations", fontdict={'fontsize':25})
+ax.bar_label(ax.containers[0], fontsize=23)
 plt.savefig('KMeans_results.png', bbox_inches='tight')
 plt.show()
 
 
 
 
-"Plot best AMI for all models"
-
-combined_AMI_dict = {
-    "KMeans": [0.8503377927133339],
-    "PCKMeans": [0.8949434943324779],
-    "SeededKMeans": [0.9259195738517745],
-}
-
-df_plot = pd.DataFrame(combined_AMI_dict)
-ax = df_plot.T.plot.barh(figsize=(17,10), rot=0, legend=False)
-ax.tick_params(axis='x', labelsize=15)
-ax.tick_params(axis='y', labelsize=15)
-ax.set_xlabel("AMI Score", fontdict={'fontsize':17})
-ax.set_ylabel("Model", fontdict={'fontsize':17})
-ax.bar_label(ax.containers[0], fontsize=16)
-ax.set_xlim(.4, 1)
-plt.savefig('combined_results.png', bbox_inches='tight')
-plt.show()
-
+# "Plot best AMI for all models"
+#
+# combined_AMI_dict = {
+#     "KMeans": [0.8503377927133339],
+#     "PCKMeans": [0.8949434943324779],
+#     "SeededKMeans": [0.9259195738517745],
+# }
+#
+# df_plot = pd.DataFrame(combined_AMI_dict)
+# ax = df_plot.T.plot.barh(figsize=(20,7), rot=0, legend=False, width=0.4)
+# ax.tick_params(axis='x', labelsize=24)
+# ax.tick_params(axis='y', labelsize=24, rotation=40)
+# ax.set_xlabel("AMI Score", fontdict={'fontsize':25})
+# ax.set_ylabel("Model", fontdict={'fontsize':25})
+# ax.bar_label(ax.containers[0], fontsize=26)
+# ax.set_xlim(.4, 1)
+# plt.savefig('combined_results.png', bbox_inches='tight')
+# plt.show()
+#
 
 
 exit()

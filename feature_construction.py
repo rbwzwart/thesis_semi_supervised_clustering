@@ -131,15 +131,17 @@ for c,mse in mse_dict.items():
     print("Average for {} is {}".format(c,round(mean(mse), 5)))
 
 "Plot scores"
+plt.rcParams["figure.figsize"] = (23, 10)
 x_plot = ["f1", 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8']
 for key in mse_dict.keys():
-    sns.lineplot(x=x_plot, y=mse_dict[key], linestyle='-', label=key, marker='o')
+    sns.lineplot(x=x_plot, y=mse_dict[key], linestyle='--', label=key, marker='o', linewidth=2.5, markersize=10)
 
-plt.xlabel("Folds", fontsize=20)
-plt.ylabel("rMSE", fontsize=20)
-plt.xticks(fontsize=18)
-plt.yticks(fontsize=18)
-plt.legend(loc=1, prop={'size': 17})
+plt.xlabel("Folds", fontsize=27)
+plt.ylabel("rMSE", fontsize=27)
+plt.xticks(fontsize=25)
+plt.yticks(fontsize=25)
+plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left', fontsize=22)
+plt.tight_layout()
 plt.savefig('autoencoder_rMSE.png', bbox_inches='tight')
 plt.show()
 

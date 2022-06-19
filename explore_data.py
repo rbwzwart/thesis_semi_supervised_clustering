@@ -1,21 +1,34 @@
 import pandas as pd
 import seaborn as sns
+import numpy as np
 import matplotlib.pyplot as plt
-plt.rcParams["figure.figsize"] = (17, 10)
+plt.rcParams["figure.figsize"] = (25, 21)
 df = pd.read_csv("final_dataset.csv")
 palette = sns.color_palette('pastel')
 
 "DATA INSPECTION"
 X_commands = df.iloc[: , 3:]
 commands_sum = X_commands.sum()
-
-sns.set(font_scale = 1.8)
 commands_sum_largest = commands_sum.nlargest(n=10)
-sns.barplot(commands_sum_largest.index, commands_sum_largest.values, palette=palette)
-plt.show()
-
 commands_sum_smallest = commands_sum.nsmallest(n=10)
-sns.barplot(commands_sum_smallest.index, commands_sum_smallest.values, palette=palette)
+
+# sns.set(font_scale = 2.3)
+fig, axs = plt.subplots(ncols=2)
+for ax in fig.axes:
+    plt.sca(ax)
+    plt.xticks(rotation=65, fontsize=30)
+    plt.yticks(fontsize=30)
+
+sns.set_style("darkgrid")
+ax_1 = sns.barplot(commands_sum_largest.index, commands_sum_largest.values, palette=palette, ax=axs[0])
+ax_2 = sns.barplot(commands_sum_smallest.index, commands_sum_smallest.values, palette=palette, ax=axs[1])
+start, end = ax_2.get_ylim()
+ax_2.yaxis.set_ticks(np.arange(start, end, 1))
+start, end = ax_1.get_ylim()
+ax_1.yaxis.set_ticks(np.arange(start, end, 400))
+ax_1.set_title("Most used commands", fontsize=30)
+ax_2.set_title("Least used commands", fontsize=30)
+
 plt.show()
 
 print(df["duration"].describe())
@@ -120,7 +133,8 @@ attack_cat = df2["attack_cat"].value_counts()
 print(attack_cat)
 labels = ["Fingerprinting", "Malicious activity"]
 palette = sns.color_palette('pastel')
-plt.pie(attack_cat, labels=labels, explode=[0.01]*2, autopct="%.1f%%", colors=palette, textprops={'fontsize': 18})
+plt.pie(attack_cat, labels=labels, explode=[0.01]*2, autopct="%.1f%%", colors=palette, textprops={'fontsize': 45})
+
 plt.savefig('Pie_plot_categories.png', bbox_inches='tight')
 plt.show()
 
