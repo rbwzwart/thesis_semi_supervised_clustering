@@ -10,7 +10,7 @@ Install requirements:
     - pandas
     - matplotlib
     - tensorflow
-    - teras
+    - keras
     - active-semi-supervised-learning (note that example_oracle.py in this package needs to be replaced with the example_oracle.py in this repo for the code to work)
     - seaborn
     - scikit-learn
