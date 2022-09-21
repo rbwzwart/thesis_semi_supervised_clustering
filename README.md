@@ -11,7 +11,7 @@ Install requirements:
     - matplotlib
     - tensorflow
     - keras
-    - active-semi-supervised-learning (note that example_oracle.py in this package needs to be replaced with the example_oracle.py in this repo for the code to work)
+    - active-semi-supervised-learning (note that example_oracle.py in this library needs to be replaced with the example_oracle.py in this repo for the code to work)
     - seaborn
     - scikit-learn
     - colorcet
